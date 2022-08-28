@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { AdvertisementType } from './models';
+import { AdvertisementType } from './models/advertisement';
 
 @Pipe({
   name: 'advertisementType',

@@ -1,3 +1,5 @@
+import { City } from './city';
+
 export interface Advertisement {
   id: number;
   address: string;
@@ -11,12 +13,6 @@ export interface Advertisement {
   imageUrl: string;
   price: number;
   size: number;
-}
-
-export interface City {
-  id: number;
-  zip: string;
-  name: string;
 }
 
 export enum AdvertisementType {

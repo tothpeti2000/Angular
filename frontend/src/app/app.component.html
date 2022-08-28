@@ -1,6 +1,6 @@
 <div class="container">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand">Otthonbazár</a>
+    <a routerLink="/" class="navbar-brand">Otthonbazár</a>
 
     <button type="button" class="navbar-toggler" (click)="toggleNavbar()">
       <span class="navbar-toggler-icon"></span>
@@ -8,17 +8,23 @@
 
     <div class="collapse navbar-collapse" [ngbCollapse]="navbarCollapsed">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link">Hirdetések</a>
+        <li
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="nav-item active"
+        >
+          <a routerLink="/" class="nav-link">Hirdetések</a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link">Hirdetés feladása</a>
+        <li routerLinkActive="active" class="nav-item">
+          <a routerLink="create" class="nav-link">Hirdetés feladása</a>
         </li>
       </ul>
     </div>
   </nav>
-  <!-- TODO: Ide jön a tartalom -->
+
+  <router-outlet></router-outlet>
+
   <hr />
   <footer>&copy; 2022 - Otthonbazár</footer>
 </div>

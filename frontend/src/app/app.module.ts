@@ -13,6 +13,8 @@ import { AdvertisementDetailsComponent } from './advertisement-details/advertise
 import { CreateEditAdvertisementComponent } from './create-edit-advertisement/create-edit-advertisement.component';
 import { FilterComponent } from './filter/filter.component';
 
+import { AdvertisementTypePipe } from './advertisement-type.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +22,7 @@ import { FilterComponent } from './filter/filter.component';
     AdvertisementDetailsComponent,
     CreateEditAdvertisementComponent,
     FilterComponent,
+    AdvertisementTypePipe,
   ],
   imports: [
     BrowserModule,

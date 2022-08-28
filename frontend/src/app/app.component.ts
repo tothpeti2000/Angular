@@ -9,6 +9,7 @@ import { Advertisement } from './models';
 })
 export class AppComponent {
   advertisements: Advertisement[];
+  navbarCollapsed = true;
 
   constructor(private client: HttpClient) {}
 
@@ -16,5 +17,9 @@ export class AppComponent {
     this.client
       .get<Advertisement[]>('/api/advertisements')
       .subscribe((advertisements) => (this.advertisements = advertisements));
+  }
+
+  toggleNavbar() {
+    this.navbarCollapsed = !this.navbarCollapsed;
   }
 }

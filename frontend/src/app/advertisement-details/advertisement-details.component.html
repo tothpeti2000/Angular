@@ -1,0 +1,45 @@
+<ng-container *ngIf="advertisement">
+  <h1 class="d-flex justify-content-between">
+    <span> {{ advertisement.city.name }}</span>
+    <span>{{ advertisement.price }} M Ft</span>
+  </h1>
+
+  {{ advertisement.address }}
+
+  <hr />
+
+  <dl>
+    <div class="row">
+      <div class="col-3">
+        <dt>Alapterület</dt>
+        <dd>{{ advertisement.size }} m <sup>2</sup></dd>
+      </div>
+
+      <div class="col-3">
+        <dt>Szobák</dt>
+        <dd>{{ advertisement.room }} + {{ advertisement.halfRoom }}</dd>
+      </div>
+
+      <div class="col-3">
+        <dt>Típus</dt>
+        <dd>{{ advertisement.advertisementType | advertisementType }}</dd>
+      </div>
+
+      <div class="col-3">
+        <dt>Építés éve</dt>
+        <dd>{{ advertisement.buildDate }}</dd>
+      </div>
+    </div>
+  </dl>
+
+  <img
+    [src]="advertisement.imageUrl || 'https://via.placeholder.com/340x255'"
+    class="img-fluid mx-auto d-block"
+  />
+
+  <h2>Leírás</h2>
+  <p>{{ advertisement.description }}</p>
+
+  <a [routerLink]="['/edit', advertisement.id]">Szerkesztés</a> |
+  <a routerLink="/">Vissza</a>
+</ng-container>

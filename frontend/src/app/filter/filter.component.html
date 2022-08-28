@@ -1,0 +1,102 @@
+<h2>Keresés</h2>
+
+<hr />
+
+<form (ngSubmit)="handleSubmit()">
+  <div class="row my-2">
+    <div class="col">
+      <input
+        type="text"
+        [(ngModel)]="filter.cityName"
+        name="cityName"
+        autocomplete="off"
+        placeholder="Város"
+        class="form-control"
+      />
+    </div>
+  </div>
+
+  <div class="row my-2">
+    <div class="col-5">
+      <input
+        type="number"
+        [(ngModel)]="filter.priceMin"
+        name="priceMin"
+        autocomplete="off"
+        placeholder="Ár (min MFt)"
+        class="form-control"
+      />
+    </div>
+
+    <div class="col-2 text-center">&ndash;</div>
+
+    <div class="col-5">
+      <input
+        type="number"
+        [(ngModel)]="filter.priceMax"
+        name="priceMax"
+        autocomplete="off"
+        placeholder="Ár (max MFt)"
+        class="form-control"
+      />
+    </div>
+  </div>
+
+  <div class="row my-2">
+    <div class="col-5">
+      <input
+        type="number"
+        [(ngModel)]="filter.sizeMin"
+        name="sizeMin"
+        autocomplete="off"
+        placeholder="Méret (min m2)"
+        class="form-control"
+      />
+    </div>
+
+    <div class="col-2 text-center">&ndash;</div>
+
+    <div class="col-5">
+      <input
+        type="number"
+        [(ngModel)]="filter.sizeMax"
+        name="sizeMax"
+        autocomplete="off"
+        placeholder="Méret (max m2)"
+        class="form-control"
+      />
+    </div>
+  </div>
+
+  <div class="row my-2">
+    <div class="col-5">
+      <input
+        type="number"
+        [(ngModel)]="filter.roomMin"
+        name="roomMin"
+        autocomplete="off"
+        placeholder="Szobák száma (min)"
+        class="form-control"
+      />
+    </div>
+
+    <div class="col-2 text-center">&ndash;</div>
+
+    <div class="col-5">
+      <input
+        type="number"
+        [(ngModel)]="filter.roomMax"
+        name="roomMax"
+        autocomplete="off"
+        placeholder="Szobák száma (max)"
+        class="form-control"
+      />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <button type="submit" class="btn btn-default w-100">Keresés</button>
+    </div>
+  </div>
+</form>

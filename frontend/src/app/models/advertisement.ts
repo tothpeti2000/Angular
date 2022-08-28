@@ -1,7 +1,7 @@
 import { City } from './city';
 
 export interface Advertisement {
-  id: number;
+  id?: number;
   address: string;
   advertisementType: AdvertisementType;
   buildDate: number;
@@ -10,7 +10,7 @@ export interface Advertisement {
   description: string;
   halfRoom: number;
   room: number;
-  imageUrl: string;
+  imageUrl?: string;
   price: number;
   size: number;
 }

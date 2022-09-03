@@ -6,8 +6,8 @@ export interface Advertisement {
   advertisementType: AdvertisementType;
   buildDate: number;
   cityId: number;
-  city: City;
-  description: string;
+  city?: City;
+  description?: string;
   halfRoom: number;
   room: number;
   imageUrl?: string;

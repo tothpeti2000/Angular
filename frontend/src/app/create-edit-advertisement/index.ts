@@ -22,8 +22,8 @@ export function fillFormWithAdvertisementDetails(
     address: advertisement.address,
     advertisementType: advertisement.advertisementType,
     buildDate: advertisement.buildDate,
-    cityZip: advertisement.city.zip,
-    cityName: advertisement.city.name,
+    cityZip: advertisement.city?.zip,
+    cityName: advertisement.city?.name,
     description: advertisement.description,
     room: advertisement.room,
     halfRoom: advertisement.halfRoom,
@@ -33,22 +33,28 @@ export function fillFormWithAdvertisementDetails(
 }
 
 export function createDto(
-  form: FormGroup<AdvertisementFormGroup>
+  form: FormGroup<AdvertisementFormGroup>,
+  advertisement: Advertisement
 ): Advertisement {
-  return {
+  let dto: Advertisement = {
     address: form.controls.address.value,
     advertisementType: form.controls.advertisementType.value,
     buildDate: form.controls.buildDate.value,
-    cityId: 1,
-    city: {
-      id: 1,
-      zip: form.controls.cityZip.value,
-      name: form.controls.cityName.value,
-    },
+    cityId: advertisement.cityId,
     description: form.controls.description.value,
     halfRoom: form.controls.halfRoom.value,
     room: form.controls.room.value,
+    imageUrl: advertisement?.imageUrl,
     price: form.controls.price.value,
     size: form.controls.size.value,
   };
+
+  if (advertisement) {
+    dto = {
+      ...dto,
+      id: advertisement.id,
+    };
+  }
+
+  return dto;
 }

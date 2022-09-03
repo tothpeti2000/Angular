@@ -2,7 +2,7 @@
 
 <hr />
 
-<form (ngSubmit)="saveAdvertisement()">
+<form (ngSubmit)="handleSubmit()" novalidate>
   <div class="row">
     <div class="col-lg-6">
       <div class="form-row col-lg-10">
@@ -10,10 +10,17 @@
 
         <div class="form-group col-lg-4">
           <input
-            type="number"
+            type="text"
             id="zip"
             [formControl]="form.controls.cityZip"
             class="form-control"
+            [class.alert]="
+              form.controls.cityZip.invalid && form.controls.cityZip.touched
+            "
+            [class.alert-danger]="
+              form.controls.cityZip.invalid && form.controls.cityZip.touched
+            "
+            (blur)="setCityNameByZip()"
           />
         </div>
 
@@ -22,7 +29,15 @@
             type="text"
             id="cityName"
             [formControl]="form.controls.cityName"
+            [ngbTypeahead]="citySearch"
             class="form-control"
+            [class.alert]="
+              form.controls.cityName.invalid && form.controls.cityName.touched
+            "
+            [class.alert-danger]="
+              form.controls.cityName.invalid && form.controls.cityName.touched
+            "
+            (blur)="setCityZipByName()"
           />
         </div>
       </div>
@@ -34,17 +49,35 @@
           id="address"
           [formControl]="form.controls.address"
           class="form-control"
+          [class.alert]="
+            form.controls.address.invalid && form.controls.address.touched
+          "
+          [class.alert-danger]="
+            form.controls.address.invalid && form.controls.address.touched
+          "
         />
       </div>
 
       <div class="form-group col-lg-7">
         <label for="type" class="font-weight-bold">Típus</label>
-        <input
-          type="text"
+        <select
           id="type"
           [formControl]="form.controls.advertisementType"
           class="form-control"
-        />
+          [class.alert]="
+            form.controls.advertisementType.invalid &&
+            form.controls.advertisementType.touched
+          "
+          [class.alert-danger]="
+            form.controls.advertisementType.invalid &&
+            form.controls.advertisementType.touched
+          "
+        >
+          <option value="0">Lakás</option>
+          <option value="1">Ház</option>
+          <option value="2">Nyaraló</option>
+          <option value="3">Építési telek</option>
+        </select>
       </div>
 
       <div class="form-group col-lg-7">
@@ -56,6 +89,12 @@
             id="size"
             [formControl]="form.controls.size"
             class="form-control"
+            [class.alert]="
+              form.controls.size.invalid && form.controls.size.touched
+            "
+            [class.alert-danger]="
+              form.controls.size.invalid && form.controls.size.touched
+            "
           />
           <div class="input-group-append">
             <div class="input-group-text">m <sup>2</sup></div>
@@ -73,6 +112,12 @@
               id="rooms"
               [formControl]="form.controls.room"
               class="form-control"
+              [class.alert]="
+                form.controls.room.invalid && form.controls.room.touched
+              "
+              [class.alert-danger]="
+                form.controls.room.invalid && form.controls.room.touched
+              "
             />
             <div class="input-group-append">
               <div class="input-group-text">szoba</div>
@@ -89,6 +134,12 @@
               id="halfRooms"
               [formControl]="form.controls.halfRoom"
               class="form-control"
+              [class.alert]="
+                form.controls.halfRoom.invalid && form.controls.halfRoom.touched
+              "
+              [class.alert-danger]="
+                form.controls.halfRoom.invalid && form.controls.halfRoom.touched
+              "
             />
             <div class="input-group-append">
               <div class="input-group-text">fél szoba</div>
@@ -104,6 +155,12 @@
           id="buildDate"
           [formControl]="form.controls.buildDate"
           class="form-control"
+          [class.alert]="
+            form.controls.buildDate.invalid && form.controls.buildDate.touched
+          "
+          [class.alert-danger]="
+            form.controls.buildDate.invalid && form.controls.buildDate.touched
+          "
         />
       </div>
     </div>
@@ -118,6 +175,12 @@
             id="price"
             [formControl]="form.controls.price"
             class="form-control"
+            [class.alert]="
+              form.controls.price.invalid && form.controls.price.touched
+            "
+            [class.alert-danger]="
+              form.controls.price.invalid && form.controls.price.touched
+            "
           />
           <div class="input-group-append">
             <div class="input-group-text">M Ft</div>

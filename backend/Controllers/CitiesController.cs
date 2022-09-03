@@ -15,6 +15,6 @@ namespace NgOtthonbazar.Controllers
         public IEnumerable<City> Get(string cityNamePrefix = null, int? zip = null)
             => _context.Cities.Where(c => 
                 (cityNamePrefix == null || c.Name.StartsWith(cityNamePrefix)) 
-                && (zip == null || c.Zip == zip.ToString())).Take(10);
+                && (zip == null || c.Zip == zip.ToString()));
     }
 }
